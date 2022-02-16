@@ -3,9 +3,6 @@ tools:
    - subclass: cwl
      primaryDescriptorPath: /tools/Dockstore.cwl
      name: md5sum
-   - subclass: wdl
-     primaryDescriptorPath: /tools/Dockstore.wdl
-     name: wdl
 workflows:
    - subclass: cwl
      primaryDescriptorPath: /workflows/HelloWorld.cwl
