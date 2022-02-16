@@ -1,45 +1,30 @@
-#!/usr/bin/env cwl-runner
-
-class: CommandLineTool
-id: Md5sum
-label: Simple md5sum tool
 cwlVersion: v1.0
-
-$namespaces:
-  dct: http://purl.org/dc/terms/
-  foaf: http://xmlns.com/foaf/0.1/
-
-doc: |
-  aaaaa [![Docker Repository on Quay.io](https://quay.io/repository/briandoconnor/dockstore-tool-md5sum/status "Docker Repository on Quay.io")](https://quay.io/repository/briandoconnor/dockstore-tool-md5sum)
-  [![Build Status](https://travis-ci.org/briandoconnor/dockstore-tool-md5sum.svg)](https://travis-ci.org/briandoconnor/dockstore-tool-md5sum)
-  A very, very simple Docker container for the md5sum command. See the [README](https://github.com/briandoconnor/dockstore-tool-md5sum/blob/master/README.md) for more information.
-
+class: Workflow
+description: "A docker container and tool for running clustalw2. Note that when you use Dockstore to create the input parameter file, not all parameters are required. You may remove from the input parameter file any parameters which are not required, unless you would like to use them. Note that not all combinations of parameters have been tested."
 
 dct:creator:
-  '@id': http://orcid.org/0000-0002-7681-6415
-  foaf:name: Brian O'Connor
-  foaf:mbox: briandoconnor@gmail.com
-requirements:
-- class: DockerRequirement
-  dockerPull: quay.io/briandoconnor/dockstore-tool-md5sum:1.0.4
-- class: InlineJavascriptRequirement
-hints:
-- class: ResourceRequirement
-  # The command really requires very little resources.
-  coresMin: 1
-  ramMin: 1024
-  outdirMin: 1024
+  foaf:name: Gary Luu
+  foaf:mbox: "gary.luu@oicr.on.ca"
 inputs:
-  input_file:
-    type: File
-    inputBinding:
-      position: 1
-    doc: The file that will have its md5sum calculated.
+  inp: File
+  ex: string
+
 outputs:
-  output_file:
+  classout:
     type: File
-    format: http://edamontology.org/data_3671
-    outputBinding:
-      glob: md5sum.txt
-    doc: A text file that contains a single line that is the md5sum of the input file.
-baseCommand: [/bin/my_md5sum]
+    outputSource: compile/classfile
+
+steps:
+  untar:
+    run: tar-param.cwl
+    in:
+      tarfile: inp
+      extractfile: ex
+    out: [example_out]
+
+  compile:
+    run: arguments.cwl
+    in:
+      src: untar/example_out
+    out: [classfile]
+
