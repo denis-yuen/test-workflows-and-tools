@@ -3,7 +3,14 @@ tools:
    - subclass: cwl
      primaryDescriptorPath: /tools/Dockstore.cwl
      name: md5sum
+     authors: 
+       - orcid: 000-0003-4896-1858
+       - orcid: 0000-0002-6130-1021
 workflows:
    - subclass: cwl
      primaryDescriptorPath: /workflows/HelloWorld.cwl
      publish: true
+     authors:
+       - orcid: 000-0003-4896-1858
+       - orcid: 0000-0002-6130-1021
+     
