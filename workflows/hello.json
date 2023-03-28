@@ -1,6 +1,6 @@
 {
   "myName": {
         "class": "File",
-        "path": "name.txt"
+        "path": "https://raw.githubusercontent.com/denis-yuen/test-workflows-and-tools/main/workflows/name.txt"
   }
 }
