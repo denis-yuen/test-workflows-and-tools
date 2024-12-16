@@ -6,6 +6,7 @@ tools:
     authors: 
       - orcid: 0000-0003-4896-1858
       - orcid: 0000-0002-6130-1021
+    enableAutoDois: true
 workflows:
   - subclass: cwl
     primaryDescriptorPath: /workflows/HelloWorld.cwl
@@ -15,6 +16,7 @@ workflows:
     authors:
       - orcid: 0000-0003-4896-1858
       - orcid: 0000-0002-6130-1021
+    enableAutoDois: true      
   - subclass: cwl
     name: funky--workflow
     primaryDescriptorPath: /workflows/HelloWorld.cwl
@@ -33,4 +35,5 @@ workflows:
     authors:
       - orcid: 0000-0003-4896-1858
       - orcid: 0000-0002-6130-1021      
+    enableAutoDois: true      
      
